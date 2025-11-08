@@ -1,0 +1,238 @@
+[gd_scene load_steps=14 format=3 uid="uid://dwy6r1rpcey1u"]
+
+[ext_resource type="Script" uid="uid://qpfuy7ofr4g3" path="res://Scripts/clicker_area.gd" id="1_bup55"]
+[ext_resource type="Texture2D" uid="uid://b53mcsk1fxexo" path="res://Assets/AI-upgrade.png" id="2_4tceh"]
+[ext_resource type="Texture2D" uid="uid://hid60ypvwva0" path="res://Assets/ENTER.png" id="2_gf57s"]
+[ext_resource type="Texture2D" uid="uid://vu6282642ulu" path="res://Assets/bg-click.jpg" id="2_t3qhq"]
+[ext_resource type="Texture2D" uid="uid://w1oc6yjhd4hk" path="res://Assets/Storage-upgrade.png" id="3_gf57s"]
+[ext_resource type="AudioStream" uid="uid://dh84gpfgu24wb" path="res://Assets/ui-button-heavy-button-press-metallic-333826.mp3" id="6_jr77h"]
+[ext_resource type="AudioStream" uid="uid://c57km554bxdp1" path="res://Assets/Retro_Cassette__Moody__Nov_8_2025_1205_PM.mp3" id="7_o45c8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3qhq"]
+atlas = ExtResource("2_gf57s")
+region = Rect2(0, 0, 39, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr77h"]
+atlas = ExtResource("2_gf57s")
+region = Rect2(39, 0, 39, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j4n6o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3qhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr77h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3qhq")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_t3qhq"]
+resource_name = "text go bip bop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_font_sizes/font_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [56, 40]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:theme_override_colors/font_color")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0.5411765, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jr77h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [56]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.5411765, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o45c8"]
+_data = {
+&"RESET": SubResource("Animation_jr77h"),
+&"text go bip bop": SubResource("Animation_t3qhq")
+}
+
+[node name="Clicker Area" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bup55")
+
+[node name="BgClick" type="Sprite2D" parent="."]
+position = Vector2(572.5, 322.5)
+scale = Vector2(3.8888888, 3.8058822)
+texture = ExtResource("2_t3qhq")
+
+[node name="Clicker" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -76.0
+offset_right = 131.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
+flat = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Clicker"]
+position = Vector2(130, 99)
+scale = Vector2(6.1282053, 4.9027777)
+sprite_frames = SubResource("SpriteFrames_j4n6o")
+frame = 2
+frame_progress = 1.0
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = 59.0
+offset_right = 26.0
+offset_bottom = 82.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.7830451, 0, 0.9098039)
+theme_override_font_sizes/font_size = 66
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AI Upgrade" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 945.0
+offset_top = 475.0
+offset_right = 1041.0
+offset_bottom = 571.0
+texture_normal = ExtResource("2_4tceh")
+
+[node name="Ai upg" type="Label" parent="AI Upgrade"]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 101.0
+offset_right = 125.0
+offset_bottom = 124.0
+text = "Cost: 100 | Level : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Storage Upgrade" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 473.0
+offset_right = 220.0
+offset_bottom = 569.0
+texture_normal = ExtResource("3_gf57s")
+
+[node name="storage upg" type="Label" parent="Storage Upgrade"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 100.0
+offset_right = 125.0
+offset_bottom = 123.0
+text = "Cost: 50 | Level : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 537.00006
+offset_right = 870.0
+offset_bottom = 614.00006
+rotation = -0.0032039569
+theme_override_colors/font_color = Color(1, 0.5411765, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "Goal is Infinte Data!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o45c8")
+}
+autoplay = "text go bip bop"
+
+[node name="StoryLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.3
+anchor_right = 0.5
+anchor_bottom = 0.3
+offset_left = -22.0
+offset_top = -9.400009
+offset_right = 19.0
+offset_bottom = 13.599991
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.5372549, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Click Away Until There's No Tomorrow!!!"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_jr77h")
+volume_db = -13.684
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_o45c8")
+autoplay = true
+
+[connection signal="pressed" from="Clicker" to="." method="_on_clicker_pressed"]
+[connection signal="pressed" from="AI Upgrade" to="." method="_on_ai_upgrade_pressed"]
+[connection signal="pressed" from="Storage Upgrade" to="." method="_on_storage_upgrade_pressed"]

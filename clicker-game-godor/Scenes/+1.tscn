@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj87bpkkkyn07"]
+
+[ext_resource type="Script" uid="uid://bx47pyuaiicn7" path="res://Scripts/+1.gd" id="1_xogvv"]
+
+[node name="+1" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0.6, 0, 1)
+text = "+1"
+script = ExtResource("1_xogvv")
